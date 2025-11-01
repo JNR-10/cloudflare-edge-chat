@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Chat from './components/Chat';
 
 function App() {
-  const [modelName, setModelName] = useState('@cf/meta/llama-3.3-8b-instruct');
+  const [modelName, setModelName] = useState('@cf/meta/llama-3.1-8b-instruct');
   const [sessionKey, setSessionKey] = useState(0);
   const [memoryBanner, setMemoryBanner] = useState<Record<string, string> | null>(null);
 
@@ -30,9 +30,9 @@ function App() {
             🤖 Edge Helpdesk AI
           </h1>
           <p className="text-gray-600 text-sm">
-            Powered by Cloudflare Workers AI • Llama 3.3 • Agents SDK
+            Powered by Cloudflare Workers AI • Llama 3.1 • Agents SDK
           </p>
-          
+
           {/* Controls */}
           <div className="mt-4 flex flex-wrap gap-4 items-end">
             <div className="flex-1 min-w-[200px]">
@@ -44,15 +44,15 @@ function App() {
                 onChange={(e) => setModelName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
-                <option value="@cf/meta/llama-3.3-8b-instruct">
-                  Llama 3.3 8B (Fast)
+                <option value="@cf/meta/llama-3.1-8b-instruct">
+                  Llama 3.1 8B (Fast)
                 </option>
-                <option value="@cf/meta/llama-3.3-70b-instruct-fp8-fast">
-                  Llama 3.3 70B FP8 (Better)
+                <option value="@cf/meta/llama-3.1-70b-instruct">
+                  Llama 3.1 70B (Better)
                 </option>
               </select>
             </div>
-            
+
             <button
               onClick={handleNewSession}
               className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors font-medium"

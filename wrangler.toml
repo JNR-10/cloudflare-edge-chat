@@ -6,6 +6,7 @@ workers_dev = true
 # Bind Workers AI as `env.AI`
 [ai]
 binding = "AI"
+remote = true
 
 # Durable Objects binding for per-session memory
 [[durable_objects.bindings]]

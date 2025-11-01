@@ -1,7 +1,7 @@
 # Edge Helpdesk AI — Cloudflare Workers AI + Agents SDK + Durable Objects
 
 A full-stack AI helpdesk application running on **Cloudflare Workers** with:
-- **Workers AI** (Llama 3.3) for LLM responses
+- **Workers AI** (Llama 3.1) for LLM responses
 - **Agents SDK** for tool orchestration
 - **Durable Objects** with SQLite for per-session memory
 - **React + Vite** frontend with SSE streaming
@@ -12,7 +12,7 @@ A full-stack AI helpdesk application running on **Cloudflare Workers** with:
 ✅ **Agent-based architecture** with 4 tools  
 ✅ **Per-session memory** using Durable Objects + SQLite  
 ✅ **Server-Sent Events (SSE)** for streaming tokens  
-✅ **Model selection** (Llama 3.3 8B / 70B FP8)  
+✅ **Model selection** (Llama 3.1 8B / 70B)  
 ✅ **React UI** with Tailwind CSS  
 ✅ **Session management** (New Session button)  
 
@@ -31,7 +31,7 @@ A full-stack AI helpdesk application running on **Cloudflare Workers** with:
 │ (Port 8787)     │  POST /api/agent/reset
 └────────┬────────┘  GET  /api/healthz
          │
-         ├─► Agents SDK ──► Workers AI (Llama 3.3)
+         ├─► Agents SDK ──► Workers AI (Llama 3.1)
          │
          └─► Durable Object (SessionDO)
              ├─► Conversation history (DO storage)
@@ -118,7 +118,7 @@ Visit **http://localhost:5173** in your browser.
 2. Try "Search github.com" → Should fail (not in allowlist)
 
 ### ✅ Model Switch
-1. Change model dropdown to "Llama 3.3 70B FP8 (Better)"
+1. Change model dropdown to "Llama 3.1 70B (Better)"
 2. Send a message → Should use 70B model (may be slower)
 
 ### ✅ Streaming
@@ -137,7 +137,7 @@ You can override the default model via `wrangler.toml`:
 
 ```toml
 [vars]
-MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+MODEL = "@cf/meta/llama-3.1-70b-instruct"
 ```
 
 ### Allowed Domains (searchSite)
@@ -218,7 +218,7 @@ This publishes to `https://edge-helpdesk.<your-subdomain>.workers.dev`.
 ```json
 {
   "message": "Hello!",
-  "model": "@cf/meta/llama-3.3-8b-instruct"
+  "model": "@cf/meta/llama-3.1-8b-instruct"
 }
 ```
 
